@@ -1,0 +1,27 @@
+.text-style {
+    /* color: red; */
+    /* color: rgb(5,100,200); */
+    color: #FF00FF;
+    background-color: blueviolet;
+    border-radius: 8px 0 0 8px;
+    border: 2px solid red;
+    font-size: 3rem;
+}
+
+#text1{
+    color: wheat;
+    padding-left: 20px;
+}
+
+button{
+    color: white;
+    background-color: green;
+    margin-top: 10px;
+    border: none;
+    padding: 4px 8px ;
+    border-radius: 3px;
+}
+
+button:hover{
+    background-color: red;
+}
