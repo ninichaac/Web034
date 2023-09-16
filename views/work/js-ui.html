@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js Ui</title>
+</head>
+
+<body>
+    <h1 id="txt">Counter = 0</h1>
+    <button>OK</button>
+
+    <!-- js -->
+    <script>
+        const btnOK = document.querySelector('button');
+        var count = 0;
+        btnOK.onclick = function(){
+            // let count = 0;
+            //count = count + 1
+            count++;
+            document.querySelector('#txt').innerText = 'Counter = ' +
+            count;
+        }
+
+    </script>
+
+
+    <!-- <script> 
+        // btnOK.addEventListener('click', function () {
+        //     // alert('OK');
+        //     document.querySelector('#txt').innerText = 'Welcome';
+        // })
+
+        // btnOK.onclick = function(){
+        //     document.querySelector('#txt').innerText = 'Welcome';
+        // }
+
+        // const txt = document.getElementById('txt');
+        // txt.innerText = 'Yoohooo' ;
+
+        // document.getElementById('txt').innerText = 'Yoohooo';
+        // document.querySelector('#txt').innerText = 'Yoohooo';
+        // document.querySelector('h1').innerText = 'Yoohooo';
+        // document.querySelector('h1').innerHTML = '<p>Yoohooo</p> to web';
+        // document.querySelector('h1').innerHTML = '<a href="#">Yoohooo</a>';
+        // document.querySelector('h1').style.color = 'blue';
+    </script> -->
+</body>
+
+</html>
