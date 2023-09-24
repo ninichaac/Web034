@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculator</title>
     <link rel="stylesheet" href="/public/css/bootstrap.min.css">
     <script src="/public/js/bootstrap.bundle.min.js"></script>
+    
 </head>
 
 <body>
-    
+
     <div class="container">
-        <h1>Calcutator</h1>
+        <h1>Calculator</h1>
         <input type="number" name="num1" class="form-control mb-3">
         <select name="operator" id="" class="form-select mb-3">
             <option value="+">+</option>
@@ -26,6 +27,7 @@
         <p class="text-danger"></p>
     </div>
 
+    <!-- js -->
     <script>
         document.querySelector('button').onclick = function () {
             const num1 = document.querySelector('input[name = num1]').value;
@@ -35,16 +37,16 @@
             const operator = document.querySelector('select[name = operator]').value;
             var ans = 0;
             if (operator == '+') {
-                ans = n1 + n2;
+                ans = n1 + n2 ;
             }
-            if (operator == '-') {
-                ans = n1 - n2;
+            if (operator == '-'){
+                ans = n1-n2;
             }
-            if (operator == '*') {
-                ans = n1 * n2;
+            if (operator == '*'){
+                ans = n1*n2;
             }
-            if (operator == '/') {
-                ans = n1 / n2;
+            if (operator == '/'){
+                ans = n1/n2;
             }
 
             document.querySelector('p').innerText = `Result = ${ans}`;
