@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset list</title>
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+    <script src="/public/js/bootstrap.bundle.min.js"></script>
+    <script src="/public/js/qrcode.min.js"></script>
+</head>
+
+<body>
+    <div class="container my-3">
+        <div class="row text-end">
+            <div>
+                <button type="button" class="btn btn-danger" id="signout">Sign out</button>
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary mt-2" id="qr">QR code</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container">
+        <h1>Asset List</h1>
+        <div>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <th class="col">Choose</th>
+                    <th class="col">ID</th>
+                    <th class="col">Name</th>
+                    <th class="col">Status</th>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <h1 class="mt-4">QR code</h1>
+        <div id="qrcode"></div>
+    </div>
+    <script src="/public/js/qr.js"></script>
+</body>
+
+</html>
