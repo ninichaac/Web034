@@ -11,97 +11,238 @@
 <body>
 
   <div class="topnav">
-    <div class="brand-container">
-      <div class="brand">The case study of security information management</div>
-      <div class="brand">at Mae Fah Luang University</div>
+    <div class="navbrand">
+      <div class="brand-container">
+        <div class="brand">The case study of security information management</div>
+        <div class="brand">at Mae Fah Luang University</div>
+      </div>
+      <div class="mfu"><img src="/public/img/mfu.png" style="height: 60px; width:50px;"></div>  
     </div>
-    <div class="mfu"><img src="/public/img/mfu.png" style="height: 60px; width:50px ;"></div>
-    <div>
+    <div class="navbar-links">
       <a class="active" href="#home" onclick="changeActiveLink(this)">Home</a>
       <a href="#news" onclick="changeActiveLink(this)">Analysis</a>
       <a href="#contact" onclick="changeActiveLink(this)">History</a>
-      <!-- <a href="#about" onclick="changeActiveLink(this)">About</a> -->
     </div>
   </div>
+  
+<!-- home  -->
+<style>
+  .container_home {
+    text-align: center;
+  }
 
-  <div id="home" class="section_home">
-    <div>
-      <h2>AI aids in the analysis of dubious or dangerous IP.</h2>
-      <p>This tool is currently under development.</p>
-      <p>Errors may occur. We apologize for this.</p>
-    </div>
-    <div class="container_home">
-      <div class="conhome">
-        <div class="dropimg"><img src="/public/img/drop.png" style="height: 170px; width: 170px;">
-        </div>
-        <h5>Drop file here</h5>
+  .dropimg img {
+    cursor: pointer; /* Change cursor to pointer when hovering over the image */
+  }
+
+  input[type="file"] {
+    display: none; /* Hide the file input */
+  }
+</style>
+
+<div id="home" class="section_home">
+  <div>
+    <h2>AI aids in the analysis of dubious or dangerous IP.</h2>
+    <p>This tool is currently under development.</p>
+    <p>Errors may occur. We apologize for this.</p>
+  </div>
+  <div class="container_home">
+    <div class="conhome">
+      <div class="dropimg">
+        <img src="/public/img/drop.png" style="height: 170px; width: 170px;" id="dropImage">
+        <input type="file" id="fileInput">
       </div>
+      <h5>Drop file here</h5>
     </div>
   </div>
+</div>
 
-  <div id="news" class="section">
+<script>
+  document.getElementById('dropImage').addEventListener('click', function() {
+    document.getElementById('fileInput').click();
+  });
+
+  document.getElementById('fileInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      console.log('Selected file:', file.name);
+      // You can handle the file upload here
+    }
+  });
+</script>
+
+<!-- home  -->
+
+<!-- Analysis -->
+<style>
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .table-container {
+    height: 600px; /* Fixed height for the table */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
+
+ <div id="news" class="section">
     <h2 class="text-center">Analysis completed</h2>
     <hr>
-
-    <table class="table table-striped">
-      <thead>
-          <th class="col">File name:_____</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td>IP:43</td>
-        </tr>
-
-        <tr>
-          <td>5555</td>
-        </tr>
-        
-        <tr>
-          <td>55</td>
-        </tr>
-        
-        <tr>
-          <td>555</td>
-        </tr>
-      </tbody>
-  </table>
-    <div>
-      
+    <div class="table-container">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>IP Address</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <!-- Initial rows will be loaded by JavaScript -->
+        </tbody>
+      </table>
     </div>
-
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const tableBody = document.getElementById('table-body');
+      const tableContainer = document.querySelector('.table-container');
 
-  <div id="contact" class="section">
-    <h2 class="text-center">History</h2>
-    <hr>
+      let currentPage = 1;
+      const rowsPerPage = 20;
+      const totalRows = 2000; // Example total number of rows
+
+      function loadMoreRows(page) {
+        // Simulate loading more rows from a data source
+        for (let i = 0; i < rowsPerPage; i++) {
+          const row = document.createElement('tr');
+          const noCell = document.createElement('td');
+          const ipCell = document.createElement('td');
+          const statusCell = document.createElement('td');
+
+          noCell.textContent = (page - 1) * rowsPerPage + i + 1;
+          ipCell.textContent = `192.168.0.${(page - 1) * rowsPerPage + i + 1}`;
+          statusCell.textContent = Math.random() > 0.5 ? 'Active' : 'Inactive';
+
+          row.appendChild(noCell);
+          row.appendChild(ipCell);
+          row.appendChild(statusCell);
+          tableBody.appendChild(row);
+        }
+      }
+
+      // Initial load
+      loadMoreRows(currentPage);
+
+      // Handle scroll event
+      tableContainer.addEventListener('scroll', function () {
+        if (tableContainer.scrollTop + tableContainer.clientHeight >= tableBody.clientHeight) {
+          if (currentPage * rowsPerPage < totalRows) {
+            currentPage++;
+            loadMoreRows(currentPage);
+          }
+        }
+      });
+    });
+  </script>
+
+<!-- Analysis -->
+
+<!-- history -->
+<style>
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  .btn-download {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+
+  .btn-download:hover {
+    background-color: #45a049;
+  }
+</style>
+
+<div id="contact" class="section">
+  <h2 class="text-center">History</h2>
+  <hr>
+  <div class="container">
     <table class="table table-striped table-bordered">
       <thead>
-          <th class="col">Date</th>
-          <th class="col">File name</th>
-          <th class="col">Download</th>
+        <tr>
+          <th>Date</th>
+          <th>File name</th>
+          <th>Download</th>
+        </tr>
       </thead>
       <tbody>
         <tr>
-          <td>fgxnbdfnbgx</td>
-          <td>sav;gl,rea</td>
+          <td>2024-06-12 10:15:30</td>
+          <td>example_file_1.txt</td>
+          <td><a href="/path/to/example_file_1.txt" class="btn-download" download>Download</a></td>
         </tr>
-
         <tr>
-          <td>fgxnbdfnbgx</td>
+          <td>2024-06-11 14:22:45</td>
+          <td>example_file_2.txt</td>
+          <td><a href="/path/to/example_file_2.txt" class="btn-download" download>Download</a></td>
         </tr>
-        
         <tr>
-          <td>fgxnbdfnbgx</td>
+          <td>2024-06-10 08:10:15</td>
+          <td>example_file_3.txt</td>
+          <td><a href="/path/to/example_file_3.txt" class="btn-download" download>Download</a></td>
         </tr>
-        
         <tr>
-          <td>fgxnbdfnbgx</td>
+          <td>2024-06-09 16:30:00</td>
+          <td>example_file_4.txt</td>
+          <td><a href="/path/to/example_file_4.txt" class="btn-download" download>Download</a></td>
         </tr>
       </tbody>
-  </table>
-</div>
-    
+    </table>
   </div>
+</div>
+<!-- history -->
 
   <script>
     function changeActiveLink(element) {

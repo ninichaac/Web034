@@ -23,16 +23,18 @@ body {
     /* Aligns the navbar at the top of the page */
     z-index: 1000;
     /* Ensures the navbar stays above other content */
-    padding: 0px 20px;
+    padding: 0px 20px 5px 20px;
     /* Adds some padding to the sides */
     flex-wrap: wrap;
     /* Allows wrapping of items in the flex container */
 }
 
+
+
 .topnav a {
     color: #000000;
     text-align: center;
-    padding: 24px 16px;
+    padding: 25px 16px;
     text-decoration: none;
     font-size: 17px;
     
@@ -48,12 +50,17 @@ body {
     color: white;
 }
 
+.navbrand {
+  display: flex;
+}
+
 .brand-container {
     display: flex;
     flex-direction: column;
     border-right: 1px solid rgba(0, 0, 0, 0.427);
     padding-right: 25px;
-    flex-shrink: 0
+    flex-shrink: 0;
+    padding-top: 10px;
 }
 
 .topnav .brand {
@@ -103,15 +110,6 @@ body {
     
 }
 
-
-.img_mfu{
-    padding-right: 65%;
-    
-}
-
-.mfu{
-    padding-right: 45%;
-}
 
 .container_home{
     position:absolute;
@@ -264,4 +262,35 @@ html, body{
 
 .container .twitter{
     text-align: center;
+}
+
+@media (max-width: 768px) {
+  .topnav {
+      flex-direction: column;
+      align-items: flex-start;
+      height: auto;
+      padding: 10px;
+  }
+
+  .brand-container {
+      border-right: none;
+      padding-right: 0;
+  }
+
+  .mfu {
+      padding-right: 0;
+      margin-top: 10px;
+  }
+
+  .navbar-links {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+  }
+
+  .topnav a {
+      padding: 14px 16px;
+      text-align: left;
+  }
+
 }
