@@ -253,6 +253,25 @@
       element.classList.add("active");
     }
   </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('.section, .section_home');
+        const navLinks = document.querySelectorAll('.navbar-links a');
+
+        function changeActiveLink() {
+            let index = sections.length;
+
+            while (--index && window.scrollY + 70 < sections[index].offsetTop) {} // 70 is the height of your navbar
+
+            navLinks.forEach((link) => link.classList.remove('active'));
+            navLinks[index].classList.add('active');
+        }
+
+        changeActiveLink();
+        window.addEventListener('scroll', changeActiveLink);
+    });
+</script>
+
 
 </body>
 
