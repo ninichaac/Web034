@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Reader</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/file.css" />
+</head>
+
+<body>
+    <!-- Search Bar -->
+    <div id="search-box" class="searchBox">
+        <input type="text" id="search" placeholder="Search for specific rows...">
+        <button class="search-btn"><i class="fas fa-search"></i></button>
+    </div>
+    <!-- End of search bar -->
+
+    <table id="myTable" style="width:100%">
+        <tr>
+            <% for (let header of headers) { %>
+                <th>
+                    <%= header %>
+                </th>
+                <% } %>
+        </tr>
+        <% for (let i=0; i < datas.length; i++) { %>
+            <tr>
+                <% for (let j=0; j < headers.length; j++) { %>
+                    <td>
+                        <%= datas[i][headers[j]] %>
+                    </td>
+                    <% } %>
+            </tr>
+            <% } %>
+    </table>
+
+    <!-- Pagination -->
+    <div id="page-numbers"></div>
+
+    <script type="text/javascript" src="/js/file.js"></script>
+</body>
+
+</html>

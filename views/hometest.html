@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop or Browse: File Upload | CodingNepal</title>
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        .container_home {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 400px;
+            background-color: #9BA3EB;
+            border-radius: 40px;
+            text-align: center;
+        }
+
+        .conhome {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 300px;
+            background-color: #fbfbfb;
+            border-radius: 40px;
+        }
+
+        .dropimg {
+            padding-top: 50px;
+        }
+
+        .dropimg img {
+            cursor: pointer;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .btn {
+            margin-top: 20px;
+            /* Adjust as needed */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container_home">
+        <div class="conhome drag-area">
+            <div class="icon dropimg">
+                <img src="/public/img/drop.png" style="height: 170px; width: 170px;" id="dropImage">
+                <input type="file" id="fileInput">
+            </div>
+            <header>Drop file here</header>
+        </div>
+    </div>
+
+    <script>
+        let file; // this is a global variable and we'll use it inside multiple functions
+
+        document.querySelector(".drag-area").addEventListener("click", () => {
+            document.getElementById('fileInput').click(); // if user clicks on the drag area, trigger the file input
+        });
+
+        document.getElementById('fileInput').addEventListener("change", function () {
+            file = this.files[0];
+            showFile(); // calling function
+        });
+
+        document.querySelector(".drag-area").addEventListener("dragover", (event) => {
+            event.preventDefault(); // preventing from default behaviour
+            document.querySelector(".drag-area").classList.add("active");
+            document.querySelector(".drag-area header").textContent = "Release to Upload File";
+        });
+
+        document.querySelector(".drag-area").addEventListener("dragleave", () => {
+            document.querySelector(".drag-area").classList.remove("active");
+            document.querySelector(".drag-area header").textContent = "Drag & Drop to Upload File";
+        });
+
+        document.querySelector(".drag-area").addEventListener("drop", (event) => {
+            event.preventDefault(); // preventing from default behaviour
+            file = event.dataTransfer.files[0];
+            showFile(); // calling function
+        });
+
+        function showFile() {
+            let fileType = file.type; // getting selected file type
+            let validExtensions = ["text/csv"]; // adding valid CSV file extension
+            if (validExtensions.includes(fileType)) { // if user selected file is a CSV file
+                let fileReader = new FileReader(); // creating new FileReader object
+                fileReader.onload = () => {
+                    document.querySelector(".drag-area").innerHTML = `
+                        <img src="/public/img/csv.png" style="height: 170px; width: 170px;" id="dropImage">
+                        <p>${file.name}</p>
+                        <button id="confirmBtn" class="btn btn-success" onclick="confirmFile()">Confirm</button>
+                        <button class="btn btn-danger" onclick="cancelFile()">Cancel</button>
+                    `;
+                }
+                console.log(file);
+                fileReader.readAsDataURL(file);
+            } else {
+                alert("Please upload a valid CSV file!");
+                resetDragArea();
+            }
+        }
+
+        function confirmFile() {
+            document.querySelector(".drag-area").innerHTML = `
+            <img src="/public/img/csv.png" style="height: 170px; width: 170px;" id="dropImage">
+            <p>${file.name}</p>
+            <button class="btn btn-primary" disabled>Confirmed</button>
+        `;
+        }
+
+        function cancelFile() {
+            file = null;
+            resetDragArea();
+        }
+
+        function resetDragArea() {
+            document.querySelector(".drag-area").innerHTML = `
+                <div class="icon dropimg">
+                    <img src="/public/img/drop.png" style="height: 170px; width: 170px;" id="dropImage">
+                    <input type="file" id="fileInput">
+                </div>
+                <header>Drop file here</header>
+            `;
+
+            document.getElementById('fileInput').addEventListener("change", function () {
+                file = this.files[0];
+                showFile(); // calling function
+            });
+        }
+    </script>
+</body>
+
+</html>

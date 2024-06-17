@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/public/css/pro.css">
   <!-- Goolge -->
   <meta name="google-signin-client_id"
-    content="427624908596-uqqfs738r21anbinb64087lgeik1medo.apps.googleusercontent.com">
+    content="686060664708-l5b3v9d9k9k24p80a57u5eu35u4m7efs.apps.googleusercontent.com">
   <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
   <meta name="google-signin-scope" content="profile email">
   <script src="https://apis.google.com/js/platform.js" async defer onload="init()"></script>
@@ -64,7 +64,7 @@
     .google-button {
       display: inline-flex;
       align-items: center;
-      padding: 10px 60px;
+      padding: 15px 65px;
       margin-top: 10px;
       font-size: 16px;
       border: none;
@@ -73,6 +73,13 @@
       color: white;
       border-radius: 4px;
       text-decoration: none;
+    }
+
+    .google-button a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
     }
 
     .google-button svg {
@@ -107,16 +114,16 @@
       </div>
     </form>
     <div class="option">or Connect With Social Media</div>
-    <div class="twitter">
-      <button class="google-button" onclick="signIn()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+    <!-- <div class="twitter"> -->
+    <button class="google-button"><a href='/auth'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
           fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
           <path
             d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
-        </svg> Sign in With Google</button>
-    </div>
+        </svg>Signin With Google </a></button>
+    <!-- </div> -->
   </div>
-  
-  <script src="https://apis.google.com/js/api:client.js"></script>
+
+  <!-- <script src="https://apis.google.com/js/api:client.js"></script>
   <script>
     function redirectToPro() {
       window.location.href = '/home';
@@ -160,7 +167,7 @@
         }
 
         init();
-    </script>
+    </script> -->
 </body>
 
 </html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>csv home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div id="input-form">
+            <header>drop file here</header>
+            <form class="form" action="/files/upload" id="myForm" method="POST" enctype="multipart/form-data">
+                <input class="inputfile" type="file" name="file" id="file" required />
+                <button type="submit" id="submit-form">Upload</button>
+            </form>
+        </div>
+
+        <div id="files">
+            <div id="files-header">upload files</div>
+            <ul>
+                <!-- <% for(let file of files) { %> -->
+                    <div class="all-file">
+                        <li>
+                            <img src="/public/img/csv.png" style="width: 30px; height: 30px;">
+                            <a class="file_name" href="/files/<%= file._id %>">
+                                <!-- <%= file.original_name %> &nbsp; -->
+                                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                            </a>
+                            <a href="/files/<%= file._id %>/delete">
+                                <i class="fa-solid fa-trash" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </div>
+                <!-- <% } %> -->
+            </ul>
+        </div>
+    </div>
+    <script src="/public/js/drop.js"></script>
+</body>
+
+</html>
